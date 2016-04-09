@@ -1,0 +1,71 @@
+﻿```xml
+<Manifest>
+  <AgentType>iOSUnified_UIKit</AgentType>
+  <Resources />
+  <TimeoutSeconds>0</TimeoutSeconds>
+</Manifest>
+```
+```csharp
+// Sketch your next great idea!
+
+LoadAssembly("/Users/raghu.rana/Code/Github/FluentLayoutDemo/packages/Cirrious.FluentLayout.2.5.0/lib/Xamarin.iOS10/Cirrious.FluentLayouts.Touch.dll")
+
+using UIKit;
+using Foundation;
+using CoreGraphics;
+using Cirrious.FluentLayouts.Touch;
+
+var View = RootView;
+
+int Margin = 5;
+int Height = 40;
+int StatusBarHeight = 30;
+
+View.BackgroundColor = UIColor.Yellow;
+
+var blueBox = new UIView { BackgroundColor = UIColor.Blue };
+View.Add(blueBox);
+
+var redBox = new UIView { BackgroundColor = UIColor.Red };
+View.Add(redBox);
+
+var greenBox = new UIView { BackgroundColor = UIColor.Green };
+View.Add(greenBox);
+
+var magentaBox = new UIView { BackgroundColor = UIColor.Magenta };
+View.Add(magentaBox);
+
+var orangeBox = new UIView { BackgroundColor = UIColor.Orange };
+View.Add(orangeBox);
+
+View.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
+View.AddConstraints(
+
+    blueBox.AtLeftOf(View).Plus(Margin),
+    blueBox.AtTopOf(View).Plus(StatusBarHeight),
+    blueBox.WithRelativeWidth(View, 0.5f), 
+    blueBox.Height().EqualTo(Height),
+
+    redBox.ToRightOf(blueBox).Plus(Margin),
+    redBox.WithSameTop(blueBox),
+    redBox.WithSameRight(View).Minus(Margin),
+    redBox.WithSameHeight(blueBox),
+
+    greenBox.Below(redBox).Plus(Margin),
+    greenBox.WithSameLeft(View).Plus(Margin),
+    greenBox.WithSameRight(View).Minus(Margin),
+    greenBox.WithSameHeight(redBox),
+
+    magentaBox.Below(greenBox).Plus(Margin),
+    magentaBox.WithSameCenterX(View),
+    magentaBox.WithRelativeWidth(View, 0.43f),
+    magentaBox.WithSameHeight(greenBox),
+
+    orangeBox.Below(magentaBox).Plus(Margin),
+    orangeBox.WithSameLeft(greenBox),
+    orangeBox.WithSameWidth(greenBox),
+    orangeBox.WithSameBottom(View).Minus(Margin)
+
+);
+```
+
