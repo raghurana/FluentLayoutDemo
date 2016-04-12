@@ -39,7 +39,7 @@ namespace FluentLayoutDemo
 
                 blueBox.AtLeftOf(View).Plus(Margin),
                 blueBox.AtTopOf(View).Plus(StatusBarHeight),
-                blueBox.WithRelativeWidth(View, 0.5f), 
+                blueBox.WithSameWidth(redBox), 
                 blueBox.Height().EqualTo(Height),
 
                 redBox.ToRightOf(blueBox).Plus(Margin),
